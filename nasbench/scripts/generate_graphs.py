@@ -74,9 +74,9 @@ from nasbench.lib import graph_util
 import numpy as np
 import tensorflow as tf   # For gfile
 
-flags.DEFINE_string('output_file', '/tmp/generated_graphs.json',
+flags.DEFINE_string('output_file', 'tmp/generated_graphs.json',
                     'Output file name.')
-flags.DEFINE_integer('max_vertices', 7,
+flags.DEFINE_integer('max_vertices', 4, #7
                      'Maximum number of vertices including input/output.')
 flags.DEFINE_integer('num_ops', 3, 'Number of operation labels.')
 flags.DEFINE_integer('max_edges', 9, 'Maximum number of edges.')
@@ -132,7 +132,9 @@ def main(_):
     logging.info('Up to %d vertices: %d graphs (%d without hashing)',
                  vertices, len(buckets), total_graphs)
 
+  
   with tf.gfile.Open(FLAGS.output_file, 'w') as f:
+    print('outputting now to ', FLAGS.output_file)
     json.dump(buckets, f, sort_keys=True)
 
 

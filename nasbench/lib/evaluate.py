@@ -122,8 +122,15 @@ class _TrainAndEvaluator(object):
         else:
           timing = training_time.limit(None)
 
-        evaluations = map(float, self.config['intermediate_evaluations'])
-        if not evaluations or evaluations[-1] != 1.0:
+        evaluations = []
+        for ev in self.config['intermediate_evaluations']:
+          evaluations.append(float(ev))        
+
+        #evaluations = map(float, self.config['intermediate_evaluations'])
+        #if not evaluations or evaluations[-1] != 1.0: #todo ask about this or figure it out
+
+
+        if not evaluations or 1.0 in evaluations:
           evaluations.append(1.0)
         assert evaluations == sorted(evaluations)
 
@@ -252,6 +259,7 @@ def _augment_and_evaluate_impl(spec, config, model_dir, epochs_per_eval=5):
   }
 
   return metadata
+
 
 
 def _create_estimator(spec, config, model_dir,
