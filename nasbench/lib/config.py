@@ -70,7 +70,7 @@ flags.DEFINE_integer(
     'Maximum training epochs. If --train_seconds is reached first, training'
     ' may not reach --train_epochs.')
 flags.DEFINE_float(
-    'train_seconds', 4.0 * 60 * 60,
+    'train_seconds', 10.0 * 60 * 60,
     'Maximum training seconds. If --train_epochs is reached first, training'
     ' may not reach --train_seconds. Used as safeguard against stalled jobs.'
     ' If train_seconds is 0.0, no time limit will be used.')
@@ -90,7 +90,7 @@ flags.DEFINE_integer(
     'Maximum number of times to try training and evaluating an individual'
     ' before aborting.')
 flags.DEFINE_list(
-    'intermediate_evaluations', ['0.5'],
+    'intermediate_evaluations', ['0.5', '0.8', '0.95'],
     'Intermediate evaluations relative to --train_epochs. For example, to'
     ' evaluate the model at 1/4, 1/2, 3/4 of the total epochs, use [0.25, 0.5,'
     ' 0.75]. An evaluation is always done at the start and end of training.')
