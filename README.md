@@ -1,4 +1,19 @@
-My fork of nasbench
+My fork of `google-research/nasbench`.
+
+Installation instructions are the same as before.
+```
+pip install -e .
+```
+
+To train an architecture, run the following commands.
+```
+python nasbench/scripts/generate_cifar10_tfrecords.py
+mkdir tmp
+python nasbench/scripts/generate_graphs.py
+python nasbench/scripts/run_evaluation.py --use_tpu=False
+```
+This will train the architecture specs defined in `tmp/generated_graphs.json`.
+
 
 # NASBench: A Neural Architecture Search Dataset and Benchmark
 
