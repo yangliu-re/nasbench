@@ -74,9 +74,9 @@ from nasbench.lib import graph_util
 import numpy as np
 import tensorflow as tf   # For gfile
 
-flags.DEFINE_string('output_file', 'tmp/generated_graphs.json',
+flags.DEFINE_string('output_file', 'tmp/graphs_6.json',
                     'Output file name.')
-flags.DEFINE_integer('max_vertices', 4, #7
+flags.DEFINE_integer('max_vertices', 6, #7
                      'Maximum number of vertices including input/output.')
 flags.DEFINE_integer('num_ops', 3, 'Number of operation labels.')
 flags.DEFINE_integer('max_edges', 9, 'Maximum number of edges.')
@@ -94,7 +94,7 @@ def main(_):
 
   logging.info('Using %d vertices, %d op labels, max %d edges',
                FLAGS.max_vertices, FLAGS.num_ops, FLAGS.max_edges)
-  for vertices in range(2, FLAGS.max_vertices+1):
+  for vertices in range(FLAGS.max_vertices, FLAGS.max_vertices+1):
     for bits in range(2 ** (vertices * (vertices-1) // 2)):
       # Construct adj matrix from bit string
       matrix = np.fromfunction(graph_util.gen_is_edge_fn(bits),

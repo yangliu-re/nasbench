@@ -57,7 +57,7 @@ import numpy as np
 import tensorflow as tf
 
 
-flags.DEFINE_string('models_file', 'tmp/test.json',
+flags.DEFINE_string('models_file', 'tmp/test_6.json',
                     'JSON file containing models.')
 flags.DEFINE_string('remainders_file', '',
                     'JSON file containing list of remainders as tuples of'
