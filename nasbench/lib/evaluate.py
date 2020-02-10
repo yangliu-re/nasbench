@@ -134,6 +134,8 @@ class _TrainAndEvaluator(object):
           evaluations.append(1.0)
         assert evaluations == sorted(evaluations)
 
+        print('evaluations:', evaluations)
+
         evaluation_results = []
         start_time = time.time()
 
@@ -147,6 +149,7 @@ class _TrainAndEvaluator(object):
             hooks=[timing.train_hook],
             saving_listeners=[timing.saving_listener])
         evaluation_results.append(self._evaluate_all(0.0, 0))
+        print('evaluated after epoch zero')
 
         for next_evaluation in evaluations:
           epoch = next_evaluation * self.config['train_epochs']
@@ -159,6 +162,7 @@ class _TrainAndEvaluator(object):
               saving_listeners=[timing.saving_listener])
 
           evaluation_results.append(self._evaluate_all(epoch, train_steps))
+          print('evaluated after epoch', epoch)
 
         all_time = time.time() - start_time
         break     # Break from retry loop on success

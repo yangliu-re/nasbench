@@ -189,6 +189,8 @@ class Evaluator(object):
                              model_id[:2],
                              model_id,
                              'repeat_%d' % model_repeat)
+
+    # evaluate the model
     try:
       meta = evaluate.train_and_evaluate(spec, self.config, model_dir)
     except evaluate.AbortError:
