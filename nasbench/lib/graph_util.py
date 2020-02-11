@@ -86,6 +86,49 @@ def is_full_dag(matrix):
 
   return (not rows_bad) and (not cols_bad)
 
+def get_paths(matrix):
+    """ 
+    return all paths from input to output
+    """
+
+    n = np.shape(matrix)[0]
+    paths = []
+    for j in range(0, n):
+        paths.append([[(0, j)]]) if matrix[0][j] else paths.append([])
+    
+    # create paths sequentially
+    for i in range(1, n - 1):
+        for j in range(1, n):
+            if matrix[i][j]:
+                for path in paths[i]:
+                    paths[j].append([*path, (i, j)])
+
+    return paths[-1]
+
+def hanging_edge(matrix):
+  """ 
+  return true if there exists an edge which is not on a path from
+  input to output
+  """
+
+  paths = get_paths(matrix)
+  n = np.shape(matrix)[0]
+
+  utilized_edges = []
+  for path in paths:
+    for edge in path:
+      utilized_edges.append(edge)
+
+  for i in range(0, n):
+    for j in range(0, n):
+      if matrix[i][j] and (i, j) not in utilized_edges:
+        print('hanging edge')
+        print(paths)
+        print(utilized_edges)
+        return True
+
+  return False
+
 
 def num_edges(matrix):
   """Computes number of edges in adjacency matrix."""

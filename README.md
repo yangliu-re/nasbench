@@ -5,14 +5,18 @@ Installation instructions are the same as before.
 pip install -e .
 ```
 
-To train an architecture, run the following commands.
+To train and evaluate an architecture, run the following commands.
 ```
 python nasbench/scripts/generate_cifar10_tfrecords.py
 mkdir tmp
 python nasbench/scripts/generate_graphs.py
 python nasbench/scripts/run_evaluation.py --use_tpu=False
+python nasbench/scripts/print_results.py
 ```
-This will train the architecture specs defined in `tmp/generated_graphs.json`.
+This will train the architecture spec defined in `tmp/test.json` and print the results.
+
+Before starting a new run, delete the folder `_recovery`.
+
 
 
 # NASBench: A Neural Architecture Search Dataset and Benchmark
