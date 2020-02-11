@@ -90,6 +90,7 @@ FLAGS = flags.FLAGS
 
 def main(_):
   total_graphs = 0    # Total number of graphs (including isomorphisms)
+  total_unlabeled_graphs = 0 # Total number of unlabeled graphs
   # hash --> (matrix, label) for the canonical graph associated with each hash
   buckets = {}
 
@@ -98,6 +99,8 @@ def main(_):
                FLAGS.min_edges, FLAGS.max_edges)
   for vertices in range(FLAGS.max_vertices, FLAGS.max_vertices+1):
     for bits in range(2 ** (vertices * (vertices-1) // 2)):
+      if bits % 100000 == 0:
+        print('bits:', bits)
 
       # Construct adj matrix from bit string
       matrix = np.fromfunction(graph_util.gen_is_edge_fn(bits),
@@ -115,6 +118,10 @@ def main(_):
       if graph_util.hanging_edge(matrix):
         print(np.array(matrix))
         continue
+
+      print('found valid ulabeled graph')
+      print(matrix)
+      total_unlabeled_graphs += 1
 
       # Iterate through all possible labelings
       for labeling in itertools.product(*[range(FLAGS.num_ops)
@@ -142,8 +149,10 @@ def main(_):
 
     logging.info('Up to %d vertices: %d graphs (%d without hashing)',
                  vertices, len(buckets), total_graphs)
+    logging.info('%d unlabeled graphs', total_unlabeled_graphs)
 
-  
+  print('finished')
+
   with tf.gfile.Open(FLAGS.output_file, 'w') as f:
     print('outputting now to ', FLAGS.output_file)
     json.dump(buckets, f, sort_keys=True)
