@@ -76,11 +76,11 @@ import tensorflow as tf   # For gfile
 
 flags.DEFINE_string('output_file', 'tmp/test_7_8.json',
                     'Output file name.')
-flags.DEFINE_integer('max_vertices', 7,
-                     'Maximum number of vertices including input/output.')
+flags.DEFINE_integer('min_vertices', 2, 'Min vertices including input/output.')
+flags.DEFINE_integer('max_vertices', 6, 'Max vertices including input/output.')
 flags.DEFINE_integer('num_ops', 3, 'Number of operation labels.')
-flags.DEFINE_integer('min_edges', 8, 'Maximum number of edges.')
-flags.DEFINE_integer('max_edges', 8, 'Maximum number of edges.')
+flags.DEFINE_integer('min_edges', 7, 'Maximum number of edges.')
+flags.DEFINE_integer('max_edges', 9, 'Maximum number of edges.')
 flags.DEFINE_boolean('verify_isomorphism', True,
                      'Exhaustively verifies that each detected isomorphism'
                      ' is truly an isomorphism. This operation is very'
@@ -97,7 +97,7 @@ def main(_):
   logging.info('Using %d vertices, %d op labels, min %d max %d edges',
                FLAGS.max_vertices, FLAGS.num_ops, 
                FLAGS.min_edges, FLAGS.max_edges)
-  for vertices in range(FLAGS.max_vertices, FLAGS.max_vertices+1):
+  for vertices in range(FLAGS.min_vertices, FLAGS.max_vertices+1):
     for bits in range(2 ** (vertices * (vertices-1) // 2)):
       if bits % 100000 == 0:
         print('bits:', bits)

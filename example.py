@@ -23,7 +23,7 @@ from nasbench import api
 
 # Replace this string with the path to the downloaded nasbench.tfrecord before
 # executing.
-NASBENCH_TFRECORD = '/path/to/nasbench.tfrecord'
+NASBENCH_TFRECORD = '../naszilla/nasbench_only108.tfrecord'
 
 INPUT = 'input'
 OUTPUT = 'output'
@@ -78,6 +78,8 @@ def main(argv):
     fixed_metrics, computed_metrics = nasbench.get_metrics_from_hash(
         unique_hash)
     print(fixed_metrics)
+    print('comp')
+    print(computed_metrics)
 
     # For demo purposes, break here instead of iterating through whole set.
     break
