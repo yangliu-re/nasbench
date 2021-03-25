@@ -26,6 +26,10 @@ from nasbench.lib import training_time
 import numpy as np
 import tensorflow as tf
 
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+sess = tf.Session(config=config)
+
 VALID_EXCEPTIONS = (
     tf.train.NanLossDuringTrainingError,  # NaN loss
     tf.errors.ResourceExhaustedError,     # OOM

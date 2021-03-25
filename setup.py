@@ -24,6 +24,6 @@ setuptools.setup(
     version='1.0',
     packages=setuptools.find_packages(),
     install_requires=[
-        'tensorflow>=1.12.0',
+        'tensorflow-gpu==1.15.4',
     ]
 )

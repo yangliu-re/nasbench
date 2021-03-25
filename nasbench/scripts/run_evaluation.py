@@ -56,6 +56,9 @@ from nasbench.lib import model_spec
 import numpy as np
 import tensorflow as tf
 
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+sess = tf.Session(config=config)
 
 flags.DEFINE_string('models_file', 'tmp/test_6.json',
                     'JSON file containing models.')

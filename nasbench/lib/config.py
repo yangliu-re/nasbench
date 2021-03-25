@@ -64,7 +64,7 @@ flags.DEFINE_integer(
 flags.DEFINE_integer(
     'num_modules_per_stack', 3, 'Number of modules per stack.')
 flags.DEFINE_integer(
-    'batch_size', 256, 'Training batch size.')
+    'batch_size', 32, 'Training batch size.')
 flags.DEFINE_integer(
     'train_epochs', 120,
     'Maximum training epochs. If --train_seconds is reached first, training'
@@ -100,7 +100,7 @@ flags.DEFINE_integer(
 
 # TPU flags
 flags.DEFINE_bool(
-    'use_tpu', True, 'Use TPUs for train and evaluation.')
+    'use_tpu', False, 'Use TPUs for train and evaluation.')
 flags.DEFINE_integer(
     'tpu_iterations_per_loop', 100, 'Iterations per loop of TPU execution.')
 flags.DEFINE_integer(
