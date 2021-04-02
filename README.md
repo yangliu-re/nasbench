@@ -1,4 +1,11 @@
-My fork of `google-research/nasbench`.
+My fork of `crwhite14/nasbench` which is a fork of the official `google-research/nasbench`.
+This repo has been updated to work with tensorflow V2.
+
+I have tested it with:
+* Ubuntu 20.04
+* CUDA 11 + CUDNN 8
+* NVIDIA RTX 3070s
+* tensorflow 2.4
 
 Installation instructions are the same as before.
 ```
