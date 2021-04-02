@@ -5,6 +5,7 @@ I have tested it with:
 * Ubuntu 20.04
 * CUDA 11 + CUDNN 8
 * NVIDIA RTX 3070s
+* Python 3.8
 * tensorflow 2.4
 
 Installation instructions are the same as before.
