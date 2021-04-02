@@ -21,9 +21,9 @@ import setuptools
 
 setuptools.setup(
     name='nasbench',
-    version='1.0',
+    version='1.1',
     packages=setuptools.find_packages(),
     install_requires=[
-        'tensorflow-gpu==1.15.4',
+        'tensorflow-gpu',
     ]
 )
