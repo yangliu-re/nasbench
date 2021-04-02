@@ -153,7 +153,7 @@ def main(_):
 
   print('finished')
 
-  with tf.gfile.Open(FLAGS.output_file, 'w') as f:
+  with tf.io.gfile.GFile(FLAGS.output_file, 'w') as f:
     print('outputting now to ', FLAGS.output_file)
     json.dump(buckets, f, sort_keys=True)
 
